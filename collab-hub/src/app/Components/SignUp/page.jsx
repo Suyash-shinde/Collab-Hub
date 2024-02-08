@@ -2,7 +2,7 @@ const SignUp = () => {
   return (
     <>
       <div className="bg-green-500 h-auto">
-        <div className="flex justify-center">
+        <div className="flex justify-centerg">
           <span className="text-center text-3xl mt-3 font-bold font-sans text-slate-800">
             Registration
           </span>
@@ -216,10 +216,10 @@ const SignUp = () => {
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     >
                       <option value="None">-Select-</option>
-                      <option value="Mech">Web Development</option>
-                      <option value="Civil">Android Development</option>
-                      <option value="EnTC">Cloud Computing</option>
-                      <option value="IT">Machine Learning</option>
+                      <option value="WebDev">Web Development</option>
+                      <option value="Android">Android Development</option>
+                      <option value="Cloud">Cloud Computing</option>
+                      <option value="ML">Machine Learning</option>
                     </select>
                   </div>
                 </div>
@@ -236,9 +236,10 @@ const SignUp = () => {
                       id="department"
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     >
-                      <option value="2024">Front-end</option>
-                      <option value="2025">Back-end</option>
-                      <option value="2026">Full-stack</option>
+                      <option value="None">-Select-</option>
+                      <option value="Front-end">Front-end</option>
+                      <option value="Back-end">Back-end</option>
+                      <option value="Full-stack">Full-stack</option>
                     </select>
                   </div>
                 </div>
@@ -256,9 +257,9 @@ const SignUp = () => {
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     >
                       <option value="None">-Select-</option>
-                      <option value="2024">Beginner</option>
-                      <option value="2025">Intermediate</option>
-                      <option value="2026">Advanced</option>
+                      <option value="Beginner">Beginner</option>
+                      <option value="Intermediate">Intermediate</option>
+                      <option value="Advanced">Advanced</option>
                     </select>
                   </div>
                 </div>
