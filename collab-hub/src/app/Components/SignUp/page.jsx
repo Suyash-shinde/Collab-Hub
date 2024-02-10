@@ -1,14 +1,37 @@
+"use client";
+import { useState } from "react";
+const departments = [
+  "-Select-",
+  "Mechanical Engineering",
+  "Civil Engineering",
+  "Electronics and Telecommunication",
+  "Information Technology",
+  "Computer Engineering",
+];
+const graduation_years = ["-Select-", "2026", "2027", "2028", "2029", "2030"];
+
 const SignUp = () => {
+  const [user, setUser] = useState(0);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    console.log(name);
+    const newUser = Object.fromEntries(formData);
+    console.log(newUser);
+    setUser(user + 1);
+    e.currentTarget.reset();
+  };
   return (
     <>
       <div className="bg-green-500 h-auto">
-        <div className="flex justify-centerg">
+        <div className="flex justify-center">
           <span className="text-center text-3xl mt-3 font-bold font-sans text-slate-800">
             Registration
           </span>
         </div>
         <div>
-          <form className="h-full m-8 rounded-xl" action="">
+          <form className="h-full m-8 rounded-xl" onSubmit={handleSubmit}>
             <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-b-2 border-gray-200">
               <div className="w-full sm:w-1/3 sm:h-auto text-center">
                 Personal Information
@@ -17,7 +40,7 @@ const SignUp = () => {
                 <div className="flex flex-col sm:flex-row w-full flex-wrap">
                   <div className=" grow sm:grow-0 md:w-1/2 lg:w-1/3 px-2">
                     <label
-                      htmlFor="first name"
+                      htmlFor="first_name"
                       className="block text-sm font-medium text-gray-700"
                     >
                       First Name
@@ -25,7 +48,7 @@ const SignUp = () => {
                     <div className="mt-1">
                       <input
                         id="first_name"
-                        name="name"
+                        name="first_name"
                         type="text"
                         autoComplete="text"
                         required
@@ -35,7 +58,7 @@ const SignUp = () => {
                   </div>
                   <div className="grow sm:grow-0  md:w-1/2 lg:w-1/3 px-2">
                     <label
-                      htmlFor="middle name"
+                      htmlFor="middle_name"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Middle Name
@@ -43,7 +66,7 @@ const SignUp = () => {
                     <div className="mt-1">
                       <input
                         id="middle_name"
-                        name="name"
+                        name="middle_name"
                         type="text"
                         autoComplete="text"
                         required
@@ -53,7 +76,7 @@ const SignUp = () => {
                   </div>
                   <div className=" grow sm:grow-0 md:w-1/2 lg:w-1/3 px-2">
                     <label
-                      htmlFor="last name"
+                      htmlFor="last_name"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Last Name
@@ -61,7 +84,7 @@ const SignUp = () => {
                     <div className="mt-1">
                       <input
                         id="last_name"
-                        name="name"
+                        name="last_name"
                         type="text"
                         autoComplete="text"
                         required
@@ -126,15 +149,15 @@ const SignUp = () => {
                 </div>
                 <div className="w-full sm:w-2/3 md:grow-0 lg:w-1/2 px-2">
                   <label
-                    htmlFor="confirm-password"
+                    htmlFor="confirm_password"
                     className="block text-sm font-medium text-gray-700 m-3 text-left"
                   >
                     Confirm Password
                   </label>
                   <div className="mt-6">
                     <input
-                      id="confirm-password"
-                      name="confirm-password"
+                      id="confirm_password"
+                      name="confirm_password"
                       type="password"
                       autoComplete="password"
                       required
@@ -162,14 +185,9 @@ const SignUp = () => {
                       id="department"
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     >
-                      <option value="None">-Select-</option>
-                      <option value="Mech">Mechanical Engineering</option>
-                      <option value="Civil">Civil Engineering</option>
-                      <option value="EnTC">
-                        Electronics and Telecommunication
-                      </option>
-                      <option value="IT">Information Technology</option>
-                      <option value="Comp">Computer Engineering</option>
+                      {departments.map((department) => {
+                        return <option key={department}>{department}</option>;
+                      })}
                     </select>
                   </div>
                 </div>
@@ -182,22 +200,23 @@ const SignUp = () => {
                   </label>
                   <div className="mt-6">
                     <select
-                      name="department"
-                      id="department"
+                      name="graduation_year"
+                      id="graduation_year"
                       className="w-full border-gray-300 rounded-lg shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
                     >
-                      <option value="2024">2024</option>
-                      <option value="2025">2025</option>
-                      <option value="2026">2026</option>
-                      <option value="2027">2027</option>
-                      <option value="2028">2028</option>
-                      <option value="2029">2029</option>
+                      {graduation_years.map((graduation_year) => {
+                        return (
+                          <option key={graduation_year}>
+                            {graduation_year}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-b-2 border-gray-200">
+            {/* <div className="flex flex-col md:flex-row md:grow-0 sm:m-3 p-3 border-b-2 border-gray-200">
               <div className="w-full sm:w-1/3 sm:h-auto text-center">
                 Technical Skills
               </div>
@@ -219,7 +238,7 @@ const SignUp = () => {
                       <option value="WebDev">Web Development</option>
                       <option value="Android">Android Development</option>
                       <option value="Cloud">Cloud Computing</option>
-                      <option value="ML">Machine Learning</option>
+                      <option value="ML ">Machine Learning</option>
                     </select>
                   </div>
                 </div>
@@ -264,7 +283,10 @@ const SignUp = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
+            <button type="submit" className="p-2 border border-black bg-white">
+              Submit
+            </button>
           </form>
         </div>
       </div>
